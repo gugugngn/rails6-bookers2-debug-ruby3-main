@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!     # ログイン認証されていなければ、ログイン画面へリダイレクトする
 
   def show
     @book = Book.find(params[:id])

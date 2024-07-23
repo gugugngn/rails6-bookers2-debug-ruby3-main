@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update]  # アップデートアクションが実行される前にログインしているユーザーか確かめている
+  before_action :authenticate_user!     # ログイン認証されていなければ、ログイン画面へリダイレクトする
  
   def show
     @user = User.find(params[:id])
