@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update]
-
+  before_action :ensure_correct_user, only: [:edit, :update]  # アップデートアクションが実行される前にログインしているユーザーか確かめている
+ 
   def show
     @user = User.find(params[:id])
     @books = @user.books
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
+  # 特定のユーザーが現在ログインしているユーザーではない場合、homeにページ移動する。
   
    private
 
