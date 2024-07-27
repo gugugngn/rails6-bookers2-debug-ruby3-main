@@ -24,6 +24,8 @@ class UsersController < ApplicationController
     end
   end
   
+  
+  
 
   def ensure_correct_user
     @user = User.find(params[:id])
