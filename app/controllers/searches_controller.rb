@@ -1,11 +1,16 @@
 class SearchesController < ApplicationController
  before_action :authenticate_user!
  
- def seach
+ def search
    @model = params[:model] 
    @content = params[:content]   # ユーザーが入力した検索キーワード
    @method = params[:method]
    
-   
+   if @model == "user"
+    @records = User.search_for(@content,@method)
+   else
+    @records = Books.search_for(@content,@method)
+   end 
  end
+ 
 end
